@@ -12,45 +12,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.loca.modal.User;
-
-import com.loca.service.locaService;
+import com.loca.modal.Admin;
+import com.loca.service.AdminService;
 
 @RestController
 @RequestMapping(value = "/api")
 @CrossOrigin(origins = "*")
-public class locaController {
+public class AdminControlleur {
 
 	@Autowired
-	private locaService locaService;
+	private AdminService adminService;
 	
-	//Ajouter User
+	//Ajouter Admin
 	
-	@PostMapping("/0")
-	User loginUser(@RequestBody User User) {
-		return locaService.loginUser(User);
+	@PostMapping("/saveAdmin")
+	Admin loginAdmin(@RequestBody Admin Admin) {
+		return adminService.loginAdmin(Admin);
 	}
 
-    //Afficher tous les users
+    //Afficher tous les Admins
 	
-	@GetMapping("/findUsers")
-	List<User> findUsers() {
-		return locaService.findUsers();
+	@GetMapping("/findAdmins")
+	List<Admin> findAdmins() {
+		return adminService.findAdmins();
 	}
 	
-	//Afficher user by id
+	//Afficher Admin by id
 	
-	@GetMapping("/findUser/{id}")
-	User findUser(@PathVariable long id) {
-		return locaService.findUser(id);
+	@GetMapping("/findAdmin/{id}")
+	Admin findAdmin(@PathVariable long id) {
+		return adminService.findAdmin(id);
 	}
 	
-	//update user by id
+	//update Admin by id
 
 	
-	@PutMapping("/updateUser/{id}")
-	User updateUser(@RequestBody User User, @PathVariable long id) {
-		return locaService.updateUser(User, id);
+	@PutMapping("/updateAdmin/{id}")
+	Admin updateAdmin(@RequestBody Admin Admin, @PathVariable long id) {
+		return adminService.updateAdmin(Admin, id);
 	}
 	
 	

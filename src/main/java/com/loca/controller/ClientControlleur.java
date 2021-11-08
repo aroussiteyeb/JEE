@@ -12,45 +12,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.loca.modal.User;
-
-import com.loca.service.locaService;
+import com.loca.modal.Client;
+import com.loca.service.ClientService;
 
 @RestController
 @RequestMapping(value = "/api")
 @CrossOrigin(origins = "*")
-public class locaController {
-
+public class ClientControlleur {
 	@Autowired
-	private locaService locaService;
+	private ClientService clientService;
 	
-	//Ajouter User
+	//Ajouter Client
 	
-	@PostMapping("/0")
-	User loginUser(@RequestBody User User) {
-		return locaService.loginUser(User);
+	@PostMapping("/saveClient")
+	Client loginClient(@RequestBody Client Client) {
+		return clientService.loginClient(Client);
 	}
 
-    //Afficher tous les users
+    //Afficher tous les Clients
 	
-	@GetMapping("/findUsers")
-	List<User> findUsers() {
-		return locaService.findUsers();
+	@GetMapping("/findClients")
+	List<Client> findClients() {
+		return clientService.findClients();
 	}
 	
-	//Afficher user by id
+	//Afficher Client by id
 	
-	@GetMapping("/findUser/{id}")
-	User findUser(@PathVariable long id) {
-		return locaService.findUser(id);
+	@GetMapping("/findClient/{id}")
+	Client findClient(@PathVariable long id) {
+		return clientService.findClient(id);
 	}
 	
-	//update user by id
+	//update Client by id
 
 	
-	@PutMapping("/updateUser/{id}")
-	User updateUser(@RequestBody User User, @PathVariable long id) {
-		return locaService.updateUser(User, id);
+	@PutMapping("/updateClient/{id}")
+	Client updateClient(@RequestBody Client Client, @PathVariable long id) {
+		return clientService.updateClient(Client, id);
 	}
 	
 	
